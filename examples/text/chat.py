@@ -1,6 +1,13 @@
 """Chat with a model"""
 
 from dotenv import load_dotenv
+from typing import Optional
+from pydantic import BaseModel
+
+class SystemMessage(BaseModel):
+    message: str
+    timestamp: Optional[str] = None  # Optional field
+SystemMessage.model_rebuild()
 
 from genai.client import Client
 from genai.credentials import Credentials
