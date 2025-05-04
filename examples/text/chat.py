@@ -2,11 +2,12 @@
 
 from dotenv import load_dotenv
 from typing import Optional
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 class SystemMessage(BaseModel):
     message: str
-    timestamp: Optional[str] = None  # Optional field
+    timestamp: Optional[str] = Field(default=None)  # Optional field
+
 SystemMessage.model_rebuild()
 
 from genai.client import Client
